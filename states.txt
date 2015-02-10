@@ -1,0 +1,40 @@
+	hawaii	4867489	R	poop
+	massachusetts	385456	D	wheels
+	new mexico	12435	D	treesap
+	south dakota	1853	D	cat toys
+	idaho	456574	R	dog food
+	michigan	234536	R	fries
+	new york	3253644	R	tires
+	tennessee	73235	D	cardboard
+	illinois	975947	R	peeps
+	minnesota	548389	D	mice
+	north carolina	39057	R	deer meat
+	texas	344433	R	phones
+	indiana	35785	D	tablets
+	mississippi	678963	R	file paper
+	north dakota	9235	D	fiber
+	utah	82734	D	software
+	iowa	96728	D	windows
+	missouri	8359	R	hemp
+	ohio	90834	D	weed
+	vermont	947594	D	beer
+	kansas	497985	R	also beer
+	montana	2487	D	beer too
+	oklahoma	246379	R	salmon
+	virginia	97294749	D	piles
+	kentucky	238678	R	condoms
+	nebraska	348648	D	snakeskin
+	oregon	29738	D	hardware
+	washington	349879	D	tools
+	louisiana	39486479	R	cups
+	nevada	343874	D	tables
+	pennsylvania	48673	D	rubie
+	west virginia	376499	R	railses
+	maine	398749	R	poopie
+	new hampshire	398579	D	pies
+	rhode island	35987	R	plates
+	wisconsin	59879	D	fenches
+	maryland	59869	D	potatoes
+	new jersey	6872	D	screens
+	south carolina	48569	R	hemp
+	wyoming	2	D	peanuts

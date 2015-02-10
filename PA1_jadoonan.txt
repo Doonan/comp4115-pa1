@@ -1,0 +1,200 @@
+My states database is in us_states.tar.gz
+
+- PART ONE -
+
+1)
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| test               |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use test;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+2)
+mysql> show columns from func;
++-------+------------------------------+------+-----+---------+-------+
+| Field | Type                         | Null | Key | Default | Extra |
++-------+------------------------------+------+-----+---------+-------+
+| name  | char(64)                     | NO   | PRI |         |       |
+| ret   | tinyint(1)                   | NO   |     | 0       |       |
+| dl    | char(128)                    | NO   |     |         |       |
+| type  | enum('function','aggregate') | NO   |     | NULL    |       |
++-------+------------------------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select count(*) from func;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+I suppose that this table is used to store some information about any functions users create.
+
+3)
+mysql> show columns from states;
++-------------+---------------+------+-----+---------+----------------+
+| Field       | Type          | Null | Key | Default | Extra          |
++-------------+---------------+------+-----+---------+----------------+
+| id          | int(11)       | NO   | PRI | NULL    | auto_increment |
+| name        | char(20)      | NO   |     | NULL    |                |
+| population  | int(11)       | NO   |     | NULL    |                |
+| majority    | enum('D','R') | NO   |     | NULL    |                |
+| best_export | char(30)      | NO   |     | NULL    |                |
++-------------+---------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from states order by population desc;
++----+-------------+------------+----------+-------------+
+| id | name        | population | majority | best_export |
++----+-------------+------------+----------+-------------+
+|  5 | california  |   98735868 | D        | pizza       |
+| 10 | georgia     |    9085734 | D        | gas         |
+|  9 | florida     |    7295003 | R        | chips       |
+|  6 | colorado    |     934564 | R        | paper       |
+|  7 | connecticut |     194976 | R        | oil         |
+|  8 | delaware    |     134865 | D        | textiles    |
+|  3 | arizona     |     108393 | R        | tortillas   |
+|  1 | alabama     |      10000 | D        | shoes       |
+|  2 | alaska      |       2047 | D        | oil         |
+|  4 | arkansas    |         10 | R        | puppies     |
++----+-------------+------------+----------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from states where majority='D';
++----+------------+------------+----------+-------------+
+| id | name       | population | majority | best_export |
++----+------------+------------+----------+-------------+
+|  1 | alabama    |      10000 | D        | shoes       |
+|  2 | alaska     |       2047 | D        | oil         |
+|  5 | california |   98735868 | D        | pizza       |
+|  8 | delaware   |     134865 | D        | textiles    |
+| 10 | georgia    |    9085734 | D        | gas         |
++----+------------+------------+----------+-------------+
+5 rows in set (0.00 sec)
+
+
+
+- PART TWO -
+
+mysql> select * from states order by name;
++----+----------------+------------+----------+-------------+
+| id | name           | population | majority | best_export |
++----+----------------+------------+----------+-------------+
+|  1 | alabama        |      10000 | D        | shoes       |
+|  2 | alaska         |       2047 | D        | oil         |
+|  3 | arizona        |     108393 | R        | tortillas   |
+|  4 | arkansas       |         10 | R        | puppies     |
+|  5 | california     |   98735868 | D        | pizza       |
+|  6 | colorado       |     934564 | R        | paper       |
+|  7 | connecticut    |     194976 | R        | oil         |
+|  8 | delaware       |     134865 | D        | textiles    |
+|  9 | florida        |    7295003 | R        | chips       |
+| 10 | georgia        |    9085734 | D        | gas         |
+| 11 | hawaii         |    4867489 | R        | poop        |
+| 15 | idaho          |     456574 | R        | dog food    |
+| 19 | illinois       |     975947 | R        | peeps       |
+| 23 | indiana        |      35785 | D        | tablets     |
+| 27 | iowa           |      96728 | D        | windows     |
+| 31 | kansas         |     497985 | R        | also beer   |
+| 35 | kentucky       |     238678 | R        | condoms     |
+| 39 | louisiana      |   39486479 | R        | cups        |
+| 43 | maine          |     398749 | R        | poopie      |
+| 47 | maryland       |      59869 | D        | potatoes    |
+| 12 | massachusetts  |     385456 | D        | wheels      |
+| 16 | michigan       |     234536 | R        | fries       |
+| 20 | minnesota      |     548389 | D        | mice        |
+| 24 | mississippi    |     678963 | R        | file paper  |
+| 28 | missouri       |       8359 | R        | hemp        |
+| 32 | montana        |       2487 | D        | beer too    |
+| 36 | nebraska       |     348648 | D        | snakeskin   |
+| 40 | nevada         |     343874 | D        | tables      |
+| 44 | new hampshire  |     398579 | D        | pies        |
+| 48 | new jersey     |       6872 | D        | screens     |
+| 13 | new mexico     |      12435 | D        | treesap     |
+| 17 | new york       |    3253644 | R        | tires       |
+| 21 | north carolina |      39057 | R        | deer meat   |
+| 25 | north dakota   |       9235 | D        | fiber       |
+| 29 | ohio           |      90834 | D        | weed        |
+| 33 | oklahoma       |     246379 | R        | salmon      |
+| 37 | oregon         |      29738 | D        | hardware    |
+| 41 | pennsylvania   |      48673 | D        | rubie       |
+| 45 | rhode island   |      35987 | R        | plates      |
+| 49 | south carolina |      48569 | R        | hemp        |
+| 14 | south dakota   |       1853 | D        | cat toys    |
+| 18 | tennessee      |      73235 | D        | cardboard   |
+| 22 | texas          |     344433 | R        | phones      |
+| 26 | utah           |      82734 | D        | software    |
+| 30 | vermont        |     947594 | D        | beer        |
+| 34 | virginia       |   97294749 | D        | piles       |
+| 38 | washington     |     349879 | D        | tools       |
+| 42 | west virginia  |     376499 | R        | railses     |
+| 46 | wisconsin      |      59879 | D        | fenches     |
+| 50 | wyoming        |          2 | D        | peanuts     |
++----+----------------+------------+----------+-------------+
+50 rows in set (0.00 sec)
+
+
+
+- PART THREE -
+
+**  File name containing queries = PA1_jadoonan.sql  **
+
+1) select orderNumber, requiredDate, shippedDate, status, comments from orders where shippedDate > requiredDate;
+
+This query returns pertinent information about any orders that were shipped after the requiredDate. It shows how date values can be used.
+This could be used to show the company's ability to handle improper payments.
+
+2) select customerName as 'big spender' from customers where customerNumber=(select customerNumber from payments where amount=(select max(amount) from payments));
+
+This query returns the name of the biggest spender. This query shows how a triple-nested query and the max() function can be used.
+Thsi query could be used to reward the biggest spender the company has ever had.
+
+3) select orderdetails.orderNumber, products.productName, orderdetails.quantityOrdered from orderdetails join products on orderdetails.productCode=products.productCode order by orderdetails.orderNumber;
+
+This query returns the order number, product ordered, and quantity of that product ordered, and they are grouped by their order number. This query shows a join of two tables and the use of order by.
+This query could be used to list every single order and each of those order's contents.
+
+4) select distinct employees.employeeNumber, employees.lastName, employees.firstName from employees join customers on employees.employeeNumber=customers.salesRepEmployeeNumber;
+
+This query returns the number and full name of all employees that are currently representing customers as sales associates. This query shows a join of two tables and the use of distinct.
+This query could be used to give a list of active sales reps to a potential customer(s).
+
+5) select employees.officeCode, offices.city, offices.state, offices.country, count(*) as 'totalEmployeesHere' from employees join offices on offices.officeCode=employees.officeCode group by officeCode order by officeCode;
+
+This query returns the number of employees that work at each office, and details about an office's location. This query shows the use of a join on two tables with a count() call on the first table, as well as group and order by.
+This query could be used to update information about the company's offices on their website or for tax reasons.
+
+6) select distinct customers.customerName as 'good customers', customers.addressLine1, customers.addressLine2, count(*) from payments join orders on payments.paymentDate < orders.shippedDate join customers on orders.customerNumber=customers.customerNumber group by customers.customerName order by count(*) desc limit 10;
+
+This query lists 10 of the customers, and their addresses, who have ever payed before their order shipped; it also counts the number of orders those customers have ever made from classic models and sorts them by that amount. This query uses a triple join and multiple count() calls.
+This query could be used to give discount based on past sales history to the top 10 customers.
+
+7) select productlines.productLine, products.productName from productlines join products on products.productLine=productlines.productLine;
+
+This query lists all of the products that classic models sells and their respective product lines. This query uses a simple join on two tables.
+This query could be used to give someone a list of all of the product lines and individual products the company sells.
+
+8) select productName as 'ford things', productLine, MSRP from products where productName like '%Ford%' order by productLine;
+
+This query lists all of the products, their respective product lines, and their msrp that have anything to do with Ford. This query only makes use of the like keyword.
+This query could be used to show a potential customer who likes Ford a list of the things he/she can buy and for how much.
+
+9) select customerName as 'boat enthusiasts' from customers where customerNumber in (select customerNumber from orders where orderNumber in (select orderNumber from orderdetails where productCode in (select productCode from products where productName like '%Boat%')));
+
+This quadruple-query returns the names of the customers who have ordered anything having to do with boats. This query uses subqueries, the like keyword, and the in keyword.
+This query could be used to target specific customers based on their past purchases from the boating line.
+
+10) select distinct employees.jobTitle, employees.firstName, employees.lastName, offices.phone, employees.extension from offices right join employees on employees.officeCode=offices.officeCode and employees.officeCode!=4;
+
+This query lists the employee number, last name, and extension of all employees; also, it lists the phone numbers of the employees who do not work in office 4. This query uses a right join on two tables.
+This query could be used to find the numbers and extensions of all employees that don't work in office 4 and only the extensions of the employees who work in office four, perhaps because the interested person works in office four or knows the number already.
